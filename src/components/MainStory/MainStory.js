@@ -41,15 +41,17 @@ const Abstract = styled.p`
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    overflow: hidden;
     -webkit-line-clamp: 8;
+
+    /* Need for line-clamping */
+    overflow: hidden;
 
     @media ${QUERIES.tabletAndUp} {
         -webkit-line-clamp: 16;
     }
 
     @media ${QUERIES.laptopAndUp} {
-        -webkit-line-clamp: 8;
+        -webkit-line-clamp: 10;
     }
 `;
 
