@@ -29,19 +29,19 @@ const Header = () => {
                 </Row>
             </SuperHeader>
             <MainHeader>
-                <ActionGroup>
+                <DesktopActionGroup>
                     <button>
                         <Search size={24} />
                     </button>
                     <button>
                         <Menu size={24} />
                     </button>
-                </ActionGroup>
+                </DesktopActionGroup>
                 <Logo />
-                <SubscribeGroup>
+                <SubscribeWrapper>
                     <Button>Subscribe</Button>
-                    <a href="/login">Alredy a member?</a>
-                </SubscribeGroup>
+                    <SubLink href="/login">Alredy a member?</SubLink>
+                </SubscribeWrapper>
             </MainHeader>
         </header>
     );
@@ -54,20 +54,6 @@ const SuperHeader = styled.div`
 
     @media ${QUERIES.laptopAndUp} {
         display: none;
-    }
-`;
-
-const SubscribeGroup = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-self: baseline;
-
-    a {
-        color: ${COLORS.gray[900]};
-        font-style: italic;
-        text-align: center;
-        text-decoration: underline;
-        font-size: ${14 / 16}rem;
     }
 `;
 
@@ -89,6 +75,35 @@ const ActionGroup = styled.div`
     }
 `;
 
+const DesktopActionGroup = styled(ActionGroup)`
+    display: none;
+
+    @media ${QUERIES.laptopAndUp} {
+        display: flex;
+    }
+`;
+
+const SubscribeWrapper = styled.div`
+    display: none;
+    justify-self: end;
+
+    @media ${QUERIES.laptopAndUp} {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-direction: column;
+        align-self: end;
+    }
+`;
+
+const SubLink = styled.a`
+    color: ${COLORS.gray[900]};
+    font-style: italic;
+    text-align: center;
+    text-decoration: underline;
+    font-size: ${14 / 16}rem;
+`;
+
 const MainHeader = styled(MaxWidthWrapper)`
     display: flex;
     align-items: center;
@@ -96,9 +111,20 @@ const MainHeader = styled(MaxWidthWrapper)`
     margin-top: 32px;
     margin-bottom: 48px;
 
+    @media ${QUERIES.tabletAndUp} {
+        margin-top: 48px;
+        margin-bottom: 72px;
+    }
+
     @media ${QUERIES.laptopAndUp} {
-        justify-content: space-between;
-        align-items: baseline;
+        display: grid;
+        justify-content: revert;
+        align-items: revert;
+        grid-template-columns: 1fr auto 1fr;
+        justify-items: start;
+        text-align: center;
+        margin-top: 16px;
+        margin-bottom: 72px;
     }
 `;
 
