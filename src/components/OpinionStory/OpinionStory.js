@@ -24,18 +24,6 @@ const Link = styled.a`
 
 const Wrapper = styled.article`
     color: var(--color-gray-900);
-    display: grid;
-
-    @media ${QUERIES.mobile} or ${QUERIES.laptopAndUp} {
-        grid-template-columns: 1fr 80px;
-        grid-template-areas:
-            "author avatar"
-            "title avatar";
-    }
-
-    @media ${QUERIES.tabletOnly} {
-        gap: 8px;
-    }
 `;
 
 const Avatar = styled.img`
@@ -44,10 +32,12 @@ const Avatar = styled.img`
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
+    float: right;
+    margin-left: 16px;
 
-    @media ${QUERIES.mobile} or ${QUERIES.laptopAndUp} {
-        grid-area: avatar;
-        justify-self: end;
+    @media ${QUERIES.tabletOnly} {
+        float: revert;
+        margin-left: revert;
     }
 `;
 
