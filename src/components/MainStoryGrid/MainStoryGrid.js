@@ -20,7 +20,9 @@ const MainStoryGrid = () => {
             <SecondaryStorySection>
                 <StoryList>
                     {SECONDARY_STORIES.map((story, index) => (
-                        <SecondaryStory key={story.id} {...story} />
+                        <VerticalStoryWrapper key={story.id}>
+                            <SecondaryStory {...story} />
+                        </VerticalStoryWrapper>
                     ))}
                 </StoryList>
             </SecondaryStorySection>
@@ -29,7 +31,9 @@ const MainStoryGrid = () => {
                 <SectionTitle>Opinion</SectionTitle>
                 <StoryList>
                     {OPINION_STORIES.map((story, index) => (
-                        <OpinionStory key={story.id} {...story} />
+                        <VerticalStoryWrapper key={story.id}>
+                            <OpinionStory key={story.id} {...story} />
+                        </VerticalStoryWrapper>
                     ))}
                 </StoryList>
             </OpinionSection>
@@ -91,6 +95,14 @@ const SecondaryStorySection = styled.section`
     }
 `;
 
+const VerticalStoryWrapper = styled.div`
+    &:not(:last-of-type) {
+        border-bottom: 1px solid ${COLORS.gray[300]};
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+    }
+`;
+
 const OpinionSection = styled.section`
     grid-area: opinion-stories;
 
@@ -103,7 +115,7 @@ const StoryList = styled.div`
     display: flex;
     flex-direction: column;
 
-    & > a {
+    /*& > a {
         border-bottom: 1px solid ${COLORS.gray[300]};
         padding: 16px 0;
 
@@ -115,7 +127,7 @@ const StoryList = styled.div`
             border: 0;
             padding-bottom: 0;
         }
-    }
+    }*/
 
     @media ${QUERIES.tabletOnly} {
         ${OpinionSection} & {
