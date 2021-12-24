@@ -36,7 +36,7 @@ const Footer = () => {
                     </Social>
                 </TopRow>
                 <MainNavArea>
-                    <nav>
+                    <NavListWrapper>
                         <MainNavHeading>Discover Content</MainNavHeading>
                         <MainNavList>
                             <li>
@@ -55,8 +55,8 @@ const Footer = () => {
                                 <a href="/oped">Opinion and Editorial</a>
                             </li>
                         </MainNavList>
-                    </nav>
-                    <nav>
+                    </NavListWrapper>
+                    <NavListWrapper>
                         <MainNavHeading>Regional Websites</MainNavHeading>
                         <MainNavList>
                             <li>
@@ -75,8 +75,8 @@ const Footer = () => {
                                 <a href="/au">New Grid Australia</a>
                             </li>
                         </MainNavList>
-                    </nav>
-                    <nav>
+                    </NavListWrapper>
+                    <NavListWrapper>
                         <MainNavHeading>Careers</MainNavHeading>
                         <MainNavList>
                             <li>
@@ -89,8 +89,8 @@ const Footer = () => {
                                 <a href="/culture">Company Culture</a>
                             </li>
                         </MainNavList>
-                    </nav>
-                    <nav>
+                    </NavListWrapper>
+                    <NavListWrapper>
                         <MainNavHeading>Legal and Privacy</MainNavHeading>
                         <MainNavList>
                             <li>
@@ -109,7 +109,7 @@ const Footer = () => {
                                 <a href="/tos">Terms and Conditions</a>
                             </li>
                         </MainNavList>
-                    </nav>
+                    </NavListWrapper>
                 </MainNavArea>
             </MaxWidthWrapper>
             <SubfooterWrapper>
@@ -143,6 +143,7 @@ const TopRow = styled.div`
     @media ${QUERIES.tabletAndUp} {
         flex-direction: row;
         justify-content: center;
+        gap: 48px;
     }
 
     @media ${QUERIES.laptopAndUp} {
@@ -161,10 +162,6 @@ const Social = styled.div`
     path {
         stroke-width: 1.5px;
     }
-
-    @media ${QUERIES.tabletAndUp} {
-        margin-left: 36px;
-    }
 `;
 
 const TopNavList = styled.ul`
@@ -180,16 +177,20 @@ const MainNavArea = styled.div`
     text-align: center;
 
     @media ${QUERIES.tabletAndUp} {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        flex-direction: revert;
         text-align: left;
-        flex-direction: row;
-        gap: 32px 64px;
-        flex-wrap: wrap;
     }
 
     @media ${QUERIES.laptopAndUp} {
-        & > * {
-            flex: 1;
-        }
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+`;
+
+const NavListWrapper = styled.nav`
+    @media ${QUERIES.laptopAndUp} {
+        flex: 1;
     }
 `;
 
@@ -217,6 +218,10 @@ const Subfooter = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media ${QUERIES.laptopAndUp} {
+        align-items: flex-start;
+    }
 `;
 
 const Logo = styled.a`
